@@ -1,15 +1,13 @@
-FROM alpine:3.8
+# use a node base image
+FROM node:7-onbuild
 
-RUN apk update
+# set maintainer
+LABEL maintainer "miiro@getintodevops.com"
 
-RUN apk add nodejs
+# set a health check
+HEALTHCHECK --interval=5s \
+            --timeout=5s \
+            CMD curl -f http://127.0.0.1:8000 || exit 1
 
-FROM 906674254390.dkr.ecr.us-east-1.amazonaws.com/service
-
-ENV PORT=80
-
-EXPOSE $PORT
-
-COPY app.js /app/
-
-CMD ["node", "/app/app.js"]
+# tell docker what port to expose
+EXPOSE 8000
