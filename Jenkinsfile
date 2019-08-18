@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git clone 'https://github.com/srinadella/ecr_image.git'
+        checkout scm
       }
     }
     stage('Building image') {
