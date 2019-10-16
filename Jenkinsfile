@@ -1,7 +1,6 @@
 pipeline {
   environment {
-    registry = "https://625031190962.dkr.ecr.us-east-1.amazonaws.com"
-    tagURI = ""
+    registry = "625031190962.dkr.ecr.us-east-1.amazonaws.com"
     registryCredential = 'ecr:us-east-1:ecrCreds'
     dockerImage = ''
   }
@@ -15,9 +14,15 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          // dockerImage = docker.build  "nodePod:$BUILD_NUMBER"
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
+    stage('Deploy Image') {
+      steps{
+        script {
           docker.withRegistry( $registry, $registryCredential ) {
-            docker.image($registry + ":$BUILD_NUMBER").push()
+            dockerImage.push()
           }
         }
       }
