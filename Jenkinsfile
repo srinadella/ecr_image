@@ -29,7 +29,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          sh("eval \$(aws ecr get-login --no-include-email | sed 's|https://||')")
+          sh("eval \$(aws ecr get-login --no-include-email --region us-east-1 | sed 's|https://||')")
           docker.withRegistry(ECRURL, ECRCRED){
             docker.image(IMAGE).push()
           }
