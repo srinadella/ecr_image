@@ -17,7 +17,7 @@ pipeline {
         script {
           // dockerImage = docker.build  "nodePod:$BUILD_NUMBER"
           docker.withRegistry( $registry, $registryCredential ) {
-            docker.image(registry + ":$BUILD_NUMBER").push('latest')
+            docker.image(registry + ":$BUILD_NUMBER").push()
           }
         }
       }
