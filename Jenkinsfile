@@ -4,7 +4,7 @@ pipeline {
     registryCredential = 'ecr:us-east-1:ecrCreds'
     dockerImage = ''
     IMAGE = 'node_sample:latest'
-    ECRURL = 'https://625031190962.dkr.ecr.us-east-1.amazonaws.com'
+    ECRURL = 'http://625031190962.dkr.ecr.us-east-1.amazonaws.com'
     ECRCRED = 'ecr:eu-central-1:ecrCreds'
   }
 
@@ -21,7 +21,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build ("$IMAGE","sripod")
+          dockerImage = docker.build ("$IMAGE")
         }
       }
     }
