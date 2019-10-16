@@ -7,13 +7,17 @@ pipeline {
     ECRURL = 'https://625031190962.dkr.ecr.us-east-1.amazonaws.com'
     ECRCRED = 'ecr:eu-central-1:ecrCreds'
   }
+
   agent any
+
   stages {
+  
     stage('Cloning Git') {
       steps {
         checkout scm
       }
     }
+  
     stage('Building image') {
       steps{
         script {
@@ -21,6 +25,7 @@ pipeline {
         }
       }
     }
+  
     stage('Deploy Image') {
       steps{
         script {
@@ -30,11 +35,13 @@ pipeline {
         }
       }
     }
+  
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $IMAGE | true"
       }
     }
+    
   }
 }
 
