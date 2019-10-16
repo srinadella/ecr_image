@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "625031190962.dkr.ecr.us-east-1.amazonaws.com/sripod:latest"
+    registry = "625031190962.dkr.ecr.us-east-1.amazonaws.com/sripod"
     registryCredential = 'Dockerhub'
     dockerImage = ''
   }
