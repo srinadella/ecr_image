@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "625031190962.dkr.ecr.us-east-1.amazonaws.com"
+    registry = "625031190962.dkr.ecr.us-east-1.amazonaws.com/sripod"
     registryCredential = 'ecr:us-east-1:ecrCreds'
     dockerImage = ''
   }
@@ -21,7 +21,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( $registry, $registryCredential ) {
+          docker.withRegistry( '', registryCredential ) {
             dockerImage.push()
           }
         }
@@ -34,3 +34,5 @@ pipeline {
     }
   }
 }
+
+
