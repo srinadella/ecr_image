@@ -4,7 +4,7 @@ pipeline {
     registryCredential = 'ecr:us-east-1:ecrCreds'
     dockerImage = ''
     IMAGE = 'node_sample:latest'
-    ECRURL = 'http://625031190962.dkr.ecr.us-east-1.amazonaws.com'
+    ECRURL = 'https://625031190962.dkr.ecr.us-east-1.amazonaws.com/sripod'
     ECRCRED = 'ecr:eu-central-1:ecrCreds'
   }
 
