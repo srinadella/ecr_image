@@ -21,7 +21,7 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          dockerImage = docker.build ("$IMAGE","examples/pipelines/TAP_docker_image_build_push_ecr")
+          dockerImage = docker.build ("$IMAGE","sripod")
         }
       }
     }
@@ -41,7 +41,7 @@ pipeline {
         sh "docker rmi $IMAGE | true"
       }
     }
-    
+
   }
 }
 
