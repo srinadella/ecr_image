@@ -21,7 +21,7 @@ pipeline {
     stage('Deploy Image') {
       steps{
         script {
-          docker.withRegistry( '' ) {
+          docker.withRegistry( '','ecr:us-east-1:ecrCreds' ) {
             dockerImage.push()
           }
         }
