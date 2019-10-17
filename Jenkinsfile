@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "cnadella/docker-test"
-    registryCredential = 'Dockerhub'
+    registryCredential = 'DockerHub'
     dockerImage = ''
   }
   agent any
