@@ -4,11 +4,17 @@ var os = require('os');
 
 // configure our HTTP server
 var server = http.createServer(function (request, response) {
-  response.writeHead(200, {"Content-Type": "text/plain"});
+  response.writeHead(200, {"Content-Type": "application/json"});
   var platform = os.platform();
   var arch = os.arch()
   var message = "Hello from www.srinadella.com Updated ";
-  response.end(message + platform + " " + arch + "   \n");
+  var responseData = {
+    "platform": platform,
+    "arch": arch,
+    "message": message
+  };
+  responseData = JSON.stringify(responseData);
+  response.end(responseData);
 });
 
 // listen on localhost:8000
