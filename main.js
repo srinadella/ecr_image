@@ -7,7 +7,7 @@ var server = http.createServer(function (request, response) {
   response.writeHead(200, {"Content-Type": "application/json"});
   var platform = os.platform();
   var arch = os.arch()
-  var message = "Hello from www.srinadella.com Updated";
+  var message = "Hello from www.srinadella.com Updated To Check Image Update";
   var responseData = {
     "platform": platform,
     "arch": arch,
